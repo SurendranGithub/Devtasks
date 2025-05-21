@@ -1,12 +1,25 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+
+import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
+import Calendar from './pages/Calendar';
+import Settings from './pages/Settings';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1 className='text-3xl text-cyan-300'>Hello World!</h1>
-    </>
+    <Router>
+      <div className="flex min-h-screen">
+        <Sidebar />
+        <main className="flex-1 p-4 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   )
 }
 
